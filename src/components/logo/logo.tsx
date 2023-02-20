@@ -1,10 +1,65 @@
+import { gsap } from "gsap";
+import { useLayoutEffect, useRef } from "react";
+
 const Logo = () => {
+  const logoRef = useRef();
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
+          transformOrigin: "50% 50%",
+          duration: 0.4,
+          ease: "sine.out",
+        },
+      });
+      tl.from("#right-sleeve", { x: -50, rotate: 180, autoAlpha: 0 })
+        .from("#left-sleeve", { x: 50, rotate: 180, autoAlpha: 0 }, "<")
+        .from("#t-shirt-collar", { y: -50, rotate: 180, autoAlpha: 0 }, "<")
+        .from("#t-shirt-body", { y: 50, rotate: 180, autoAlpha: 0 }, "<")
+        .from(["#eeRex-e-1"], {
+          x: -20,
+          rotate: 360,
+          autoAlpha: 0,
+          duration: 0.15,
+        })
+        .from(["#eeRex-e-2"], {
+          x: -50,
+          rotate: 360,
+          autoAlpha: 0,
+          duration: 0.15,
+        })
+        .from(["#eeRex-R"], {
+          x: -70,
+          rotate: 360,
+          autoAlpha: 0,
+          duration: 0.15,
+        })
+        .from(["#eeRex-e-3"], {
+          x: -80,
+          rotate: 360,
+          autoAlpha: 0,
+          duration: 0.15,
+        })
+        .from(["#eeRex-x"], {
+          x: -80,
+          rotate: 360,
+          autoAlpha: 0,
+          duration: 0.15,
+        })
+        .from("#store-mask-rect", { width: 0, duration: 0.2 });
+
+      tl.timeScale(0.5);
+    }, logoRef);
+
+    return () => ctx.revert();
+  }, []);
   return (
     <svg
       width="150px"
       xmlns="http://www.w3.org/2000/svg"
       id="teerex-logo"
       viewBox="0 0 150 150"
+      ref={logoRef}
     >
       <title>TeeRex Store logo</title>
       <defs>
