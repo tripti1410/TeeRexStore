@@ -13,7 +13,6 @@ const Cart = () => {
         />
       </svg>
       <span>cart</span>
-
       <span className="cart-total">{numberOfSelectedProducts}</span>
     </div>
   );
