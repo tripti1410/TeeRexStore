@@ -1,0 +1,17 @@
+.site-header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ position: relative;
+}
+.site-header::before {
+ content: "";
+ background-color: var(--clr-3);
+ position: absolute;
+ width: 100vw;
+ height: 100%;
+ margin-left: calc(
+  (((100vw - var(--maxWidth)) / 2) * -1) - (var(--space-s) / 2)
+ );
+ z-index: -1;
+}

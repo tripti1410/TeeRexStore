@@ -1,9 +1,19 @@
-#root {
- max-width: 1280px;
+.App {
+ max-width: var(--maxWidth);
  margin: 0 auto;
- padding: 2rem;
+ padding-inline: var(--space-s);
  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.product-listing {
+ grid-area: productListing;
+ display: grid;
+ grid-gap: calc(2 * var(--space-s));
+ grid-template-columns: 1fr 1fr 1fr;
+}
+.product-page {
+ padding-block: var(--space-s);
+ display: grid;
+ grid-gap: calc(2 * var(--space-s));
+ grid-template-areas: ". search search" " filters productListing productListing";
 }

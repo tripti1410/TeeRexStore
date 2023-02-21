@@ -12,6 +12,9 @@
  --clr-5: #dbf227;
  --clr-6: #005c53;
 
+ --space-s: 1rem;
+ --maxWidth: 1280px;
+
  font-synthesis: none;
  text-rendering: optimizeLegibility;
  -webkit-font-smoothing: antialiased;
@@ -30,15 +33,8 @@ a:hover {
 
 body {
  margin: 0;
- display: flex;
- place-items: center;
  min-width: 320px;
  min-height: 100vh;
-}
-
-h1 {
- font-size: 3.2em;
- line-height: 1.1;
 }
 
 button {
@@ -48,7 +44,8 @@ button {
  font-size: 1em;
  font-weight: 500;
  font-family: inherit;
- background-color: #1a1a1a;
+ color: var(--clr-1);
+ background-color: var(--clr-2);
  cursor: pointer;
  transition: border-color 0.25s;
 }
@@ -69,10 +66,10 @@ button:focus-visible {
   --clr-5: #dbf227;
   --clr-6: #d6d58e;
  }
- a:hover {
+ /* a:hover {
   color: #747bff;
  }
  button {
   background-color: #f9f9f9;
- }
+ } */
 }

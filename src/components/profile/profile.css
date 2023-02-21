@@ -1,0 +1,9 @@
+.profile-icon {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.profile-icon #profile-bg {
+ fill: var(--clr-5);
+}

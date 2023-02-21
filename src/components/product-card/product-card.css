@@ -1,0 +1,23 @@
+.product-card {
+ padding: 1rem;
+ background-color: var(--clr-6);
+ position: relative;
+}
+.product-card figure {
+ max-width: 300px;
+ max-height: 300px;
+}
+.product-card h2 {
+ position: absolute;
+ top: 1rem;
+ left: 1rem;
+ padding: 0.5rem 0.7rem;
+ background-color: rgba(255, 255, 255, 0.8);
+ margin: 0;
+}
+.product-card .product-details {
+ display: flex;
+ justify-content: space-between;
+}
+.product-card .product-details span {
+}
