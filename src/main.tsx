@@ -1,15 +1,41 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
+
 import "./reset.css";
 import "./utility.css";
 import "./index.css";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import ProductListing from "./pages/product-listing/product-listing";
+import ShopingCart from "./pages/shooping-cart/shooping-cart";
+
+const BaseLayout = ({ children }) => {
+  return (
+    <div className="wrapper">
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <BaseLayout>
+        <ProductListing />
+      </BaseLayout>
+    ),
+  },
+  {
+    path: "/shopping-cart",
+    element: (
+      <BaseLayout>
+        <ShopingCart />
+      </BaseLayout>
+    ),
   },
 ]);
 
