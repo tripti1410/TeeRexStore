@@ -10,7 +10,11 @@ import Footer from "./components/footer/footer";
 import ProductListing from "./pages/product-listing/product-listing";
 import ShopingCart from "./pages/shooping-cart/shooping-cart";
 
-const BaseLayout = ({ children }) => {
+type ChildrenProps = {
+  children: JSX.Element | JSX.Element[];
+};
+
+const BaseLayout = ({ children }: ChildrenProps) => {
   return (
     <div className="wrapper">
       <Header />

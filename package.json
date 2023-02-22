@@ -7,7 +7,7 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "prepare": "husky install",
-    "dev": "vite",
+    "dev": "tsc && vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

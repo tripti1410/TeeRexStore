@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./logo.css";
 
 const Logo = () => {
-  const logoRef = useRef();
+  const logoRef = useRef<SVGSVGElement | null>(null);
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
