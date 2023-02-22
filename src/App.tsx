@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import ProductCard from "./components/product-card/product-card";
 import ProductFilters from "./components/product-filters/product-filters";
@@ -18,6 +19,7 @@ function App() {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

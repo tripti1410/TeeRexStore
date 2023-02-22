@@ -13,7 +13,7 @@ const Cart = () => {
         />
       </svg>
       <span>cart</span>
-      <span className="cart-total">{numberOfSelectedProducts}</span>
+      <span className="cart-total clr-nvy">{numberOfSelectedProducts}</span>
     </div>
   );
 };

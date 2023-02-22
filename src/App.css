@@ -12,8 +12,8 @@
  grid-template-columns: 1fr 1fr 1fr;
 }
 .product-page {
- padding-block: var(--space-s);
+ padding-block: calc(3.5 * var(--space-s));
  display: grid;
- grid-gap: calc(2 * var(--space-s));
+ grid-gap: calc(3.5 * var(--space-s));
  grid-template-areas: ". search search" " filters productListing productListing";
 }
