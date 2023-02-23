@@ -1,0 +1,14 @@
+.clr-nvy {
+ color: #042940;
+}
+.flex-center {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.flex-direction-column {
+ flex-direction: column;
+}
+.flex-direction-row {
+ flex-direction: row;
+}

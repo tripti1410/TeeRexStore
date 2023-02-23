@@ -1,9 +1,18 @@
 import ProductCard from "../../components/product-card/product-card";
 import ProductFilters from "../../components/product-filters/product-filters";
 import ProductsSearch from "../../components/products-search/products-search";
+import { useGetProductsQuery } from "../../feautes/product-api/product-api-slice";
 import "./product-listing.css";
+import { Product } from "../../types";
 
 const ProductListing = () => {
+  const products: Product[] = [];
+  const { data = [], isSuccess } = useGetProductsQuery();
+
+  if (isSuccess) {
+    // products = data;
+  }
+
   return (
     <div className="product-page">
       <ProductsSearch />
