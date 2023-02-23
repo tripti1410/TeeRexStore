@@ -6,11 +6,11 @@ import "./product-listing.css";
 import { Product } from "../../types";
 
 const ProductListing = () => {
-  const products: Product[] = [];
+  let products: Product[] = [];
   const { data = [], isSuccess } = useGetProductsQuery();
 
   if (isSuccess) {
-    // products = data;
+    products = data;
   }
 
   return (
@@ -18,8 +18,8 @@ const ProductListing = () => {
       <ProductsSearch />
       <ProductFilters />
       <section className="product-listing">
-        {[1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(() => (
-          <ProductCard />
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
         ))}
       </section>
     </div>

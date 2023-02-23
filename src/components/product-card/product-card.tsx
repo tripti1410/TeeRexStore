@@ -1,17 +1,18 @@
 import "./product-card.css";
+import { Product } from "../../types";
 
-const ProductCard = () => {
+interface PropsType {
+  product: Product;
+}
+const ProductCard = ({ product }: PropsType) => {
   return (
     <article className="product-card">
       <figure>
-        <img
-          src="https://images.unsplash.com/photo-1674461315014-ba2735fc109c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzY4OTgxNDA&ixlib=rb-4.0.3&q=80&w=300"
-          alt=""
-        />
+        <img src={product.imageURL} alt={product.name} />
       </figure>
-      <h2>Black polo</h2>
+      <h2>{product.name}</h2>
       <div className="product-details">
-        <span>Rs 350</span>
+        <span>Rs {product.price}</span>
         <button>Add to cart</button>
       </div>
     </article>
