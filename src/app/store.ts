@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { productsAPISlice } from "./src/feautes/product-api/product-api-slice";
-import productListingSlice from "./src/feautes/product-api/product-listing-slice";
+import { productsAPISlice } from "../features/product-api/product-api-slice";
+import productListingSlice from "../features/product-api/product-listing-slice";
+import searchSlice from "../features/search/search-slice";
 
 export const store = configureStore({
   reducer: {
     [productsAPISlice.reducerPath]: productsAPISlice.reducer,
     products: productListingSlice,
+    searchInput: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productsAPISlice.middleware),

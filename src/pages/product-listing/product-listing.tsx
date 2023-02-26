@@ -1,9 +1,10 @@
 import ProductCard from "../../components/product-card/product-card";
 import ProductFilters from "../../components/product-filters/product-filters";
 import ProductsSearch from "../../components/products-search/products-search";
-import { useGetProductsQuery } from "../../feautes/product-api/product-api-slice";
+import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
 import "./product-listing.css";
 import { Product } from "../../types";
+import { useAppDispatch } from "../../app/hooks";
 
 const ProductListing = () => {
   let products: Product[] = [];
