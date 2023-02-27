@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     [productsAPISlice.reducerPath]: productsAPISlice.reducer,
     products: productListingSlice,
-    searchInput: searchSlice,
+    searchTerm: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productsAPISlice.middleware),

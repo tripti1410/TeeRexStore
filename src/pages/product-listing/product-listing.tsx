@@ -4,15 +4,18 @@ import ProductsSearch from "../../components/products-search/products-search";
 import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
 import "./product-listing.css";
 import { Product } from "../../types";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
+import getSearchedProducts from "../../features/search/search";
 
 const ProductListing = () => {
   let products: Product[] = [];
   const { data = [], isSuccess } = useGetProductsQuery();
-
+  const searchTerm = useAppSelector((state) => state.searchTerm);
   if (isSuccess) {
     products = data;
   }
+
+  products = getSearchedProducts(products, searchTerm);
 
   return (
     <div className="product-page">
