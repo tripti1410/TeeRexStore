@@ -10,7 +10,7 @@ import getSearchedProducts from "../../features/search/search";
 const ProductListing = () => {
   let products: Product[] = [];
   const { data = [], isSuccess } = useGetProductsQuery();
-  const searchTerm = useAppSelector((state) => state.searchTerm);
+  const searchTerm = useAppSelector((state) => state.searchTerm.value);
   if (isSuccess) {
     products = data;
   }
@@ -22,9 +22,13 @@ const ProductListing = () => {
       <ProductsSearch />
       <ProductFilters />
       <section className="product-listing">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {products.length <= 0 ? (
+          <p>No products found</p>
+        ) : (
+          products.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        )}
       </section>
     </div>
   );
