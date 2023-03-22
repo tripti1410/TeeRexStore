@@ -12,8 +12,7 @@ function getSearchedProducts(products: Product[], searchTerm: string) {
   if (searchTerm === "") {
     return products;
   } else {
-    const result;
-    result = products.filter((product) => {
+    const result = products.filter((product) => {
       let abc;
       attributes.forEach((attribute) => {
         if (getProduct(product, attribute, searchTerm)) {
