@@ -1,17 +1,29 @@
 import { Product } from "../../types";
 
-const attributes = ["name"];
+const attributes = ["name", "color", "type"];
 
-function getProduct(product, searchTerm) {
+function getProduct(product, attribute, searchTerm) {
   const searchTermLowerCase = searchTerm.toLowerCase();
-  const productAttributeLowerCase = product["name"].toLowerCase();
+  const productAttributeLowerCase = product[attribute].toLowerCase();
   return productAttributeLowerCase.startsWith(searchTermLowerCase);
 }
 
 function getSearchedProducts(products: Product[], searchTerm: string) {
-  const result = products.filter((product) => getProduct(product, searchTerm));
-  console.log(result, "++++++++");
-  return result;
+  if (searchTerm === "") {
+    return products;
+  } else {
+    const result;
+    result = products.filter((product) => {
+      let abc;
+      attributes.forEach((attribute) => {
+        if (getProduct(product, attribute, searchTerm)) {
+          abc = true;
+        }
+      });
+      return abc;
+    });
+    return result;
+  }
 }
 
 export default getSearchedProducts;
