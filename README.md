@@ -5,3 +5,4 @@ The task is taken from Greektrust coding challenge. Here[https://www.geektrust.c
 
 1. Vite + React + Typescript
 2. Eslint, prettier
+3. Filters: Dynamically setting filters on page load. This is ok in this case there is no pagination. In real scenario, it should come from API.

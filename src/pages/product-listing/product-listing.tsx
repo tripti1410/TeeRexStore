@@ -4,8 +4,11 @@ import ProductsSearch from "../../components/products-search/products-search";
 import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
 import "./product-listing.css";
 import { Product } from "../../types";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import getSearchedProducts from "../../features/search/search";
+import { setProducts } from "../../features/product-api/product-listing-slice";
+import { useEffect } from "react";
+import { setInitialFilters } from "../../features/filters/filters-slice";
 
 const ProductListing = () => {
   let products: Product[] = [];
@@ -14,6 +17,14 @@ const ProductListing = () => {
   if (isSuccess) {
     products = data;
   }
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!isSuccess) return;
+
+    dispatch(setProducts(products));
+    dispatch(setInitialFilters(products));
+  }, [dispatch, isSuccess]);
 
   products = getSearchedProducts(products, searchTerm);
 

@@ -1,23 +1,26 @@
+import { useAppSelector } from "../../app/hooks";
+import { ATTRIBUTES } from "../../features/filters/get-filters";
 import "./product-filters.css";
+import { isObjectEmpty } from "../../app/utility";
+
 const ProductFilters = () => {
+  const initialFilters = useAppSelector(
+    (state) => state.filters.initialFilters
+  );
+
   return (
     <aside className="product-filters">
-      {[1, 2, 3].map(() => (
+      {ATTRIBUTES.map((attributeName) => (
         <div>
-          <h2>Color</h2>
+          <h2>{attributeName}</h2>
           <ul>
-            <li className="product-filter">
-              <input type="checkbox" />
-              abc
-            </li>
-            <li className="product-filter">
-              <input type="checkbox" />
-              abc
-            </li>
-            <li className="product-filter">
-              <input type="checkbox" />
-              abc
-            </li>
+            {isObjectEmpty(initialFilters) &&
+              initialFilters[attributeName].map((filterName) => (
+                <li className="product-filter">
+                  <input type="checkbox" />
+                  {filterName}
+                </li>
+              ))}
           </ul>
         </div>
       ))}
