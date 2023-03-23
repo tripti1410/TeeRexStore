@@ -21,7 +21,6 @@ const ProductListing = () => {
 
   useEffect(() => {
     if (!isSuccess) return;
-
     dispatch(setProducts(products));
     dispatch(setInitialFilters(products));
   }, [dispatch, isSuccess]);
