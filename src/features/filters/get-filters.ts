@@ -11,7 +11,7 @@ function getFilterVlaues(products: Array<Product>, attribute: string) {
     const MinPrice = Number(priceValues[0]);
     const margin = 50;
     return [
-      `0 - Rs${MinPrice}`,
+      `Rs 0 - ${MinPrice}`,
       `Rs${MinPrice + 1} - ${MaxPrice - margin}`,
       `Rs${MaxPrice - margin} < `,
     ];
