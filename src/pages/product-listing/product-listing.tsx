@@ -9,11 +9,15 @@ import getSearchedProducts from "../../features/search/search";
 import { setProducts } from "../../features/product-api/product-listing-slice";
 import { useEffect } from "react";
 import { setInitialFilters } from "../../features/filters/filters-slice";
+import getFilteredProducts from "../../features/filters/filter-products";
 
 const ProductListing = () => {
   let products: Product[] = [];
   const { data = [], isSuccess } = useGetProductsQuery();
   const searchTerm = useAppSelector((state) => state.searchTerm.value);
+  const selectedfilters = useAppSelector(
+    (state) => state.filters.selectedFilters
+  );
   if (isSuccess) {
     products = data;
   }
@@ -24,8 +28,8 @@ const ProductListing = () => {
     dispatch(setProducts(products));
     dispatch(setInitialFilters(products));
   }, [dispatch, isSuccess]);
-
   products = getSearchedProducts(products, searchTerm);
+  products = getFilteredProducts(products, selectedfilters);
 
   return (
     <div className="product-page">
