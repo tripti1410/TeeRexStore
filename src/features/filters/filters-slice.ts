@@ -5,20 +5,43 @@ const filtersSlice = createSlice({
   name: "filter",
   initialState: {
     initialFilters: {},
-    selectedFilters: {
-      color: ["Blue", "Grey"],
-      gender: ["Women"],
-    },
+    selectedFilters: {},
   },
   reducers: {
     setInitialFilters(state, { type, payload }) {
       state.initialFilters = getFilters(payload);
     },
-    setSelectedFilters(state, payload) {
-      console.log(payload, "payload");
+    addSelectedFilter(state, { type, payload }) {
+      if (
+        Object.prototype.hasOwnProperty.call(
+          state.selectedFilters,
+          payload.attributeName
+        )
+      ) {
+        state.selectedFilters[payload.attributeName] = [
+          ...state.selectedFilters[payload.attributeName],
+          payload.filterName,
+        ];
+      } else {
+        state.selectedFilters = {
+          ...state.selectedFilters,
+          [payload.attributeName]: [payload.filterName],
+        };
+      }
+    },
+    removeSelectedFilter(state, { type, payload }) {
+      state.selectedFilters = {
+        ...state.selectedFilters,
+        [payload.attributeName]: state.selectedFilters[
+          payload.attributeName
+        ].filter(
+          (selectedFilterName) => selectedFilterName !== payload.filterName
+        ),
+      };
     },
   },
 });
 
-export const { setInitialFilters, setSelectedFilters } = filtersSlice.actions;
+export const { setInitialFilters, addSelectedFilter, removeSelectedFilter } =
+  filtersSlice.actions;
 export default filtersSlice.reducer;
