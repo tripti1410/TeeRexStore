@@ -6,13 +6,18 @@ import {
   addSelectedFilter,
   removeSelectedFilter,
 } from "../../features/filters/filters-slice";
+import { ChangeEvent } from "react";
 
 const ProductFilters = () => {
   const initialFilters = useAppSelector(
     (state) => state.filters.initialFilters
   );
   const dispatch = useAppDispatch();
-  const handleFilterChange = (e, filterName, attributeName) => {
+  const handleFilterChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    filterName: string,
+    attributeName: string
+  ) => {
     if (e.target.checked) {
       dispatch(
         addSelectedFilter({
@@ -37,7 +42,7 @@ const ProductFilters = () => {
           <h2>{attributeName}</h2>
           <ul>
             {!isObjectEmpty(initialFilters) &&
-              initialFilters[attributeName].map((filterName) => (
+              initialFilters[attributeName].map((filterName: string) => (
                 <li className="product-filter" key={filterName}>
                   <input
                     type="checkbox"

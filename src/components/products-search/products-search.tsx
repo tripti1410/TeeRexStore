@@ -1,12 +1,13 @@
-import { SyntheticEvent } from "react";
+import { ChangeEvent } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { setSearchTerm } from "../../features/search/search-slice";
 import "./products-search.css";
 
 const ProductsSearch = () => {
   const dispatch = useAppDispatch();
-  const searchProducts = (e: SyntheticEvent) => {
-    dispatch(setSearchTerm(e.target.value));
+  const searchProducts = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim();
+    dispatch(setSearchTerm(value));
   };
 
   return (

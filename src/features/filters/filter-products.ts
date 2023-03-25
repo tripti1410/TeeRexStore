@@ -6,7 +6,7 @@ function filterProduct(
   filterName: string,
   filterValue: string
 ): boolean {
-  return product[filterName] === filterValue ? true : false;
+  return product[filterName as keyof Product] === filterValue ? true : false;
 }
 function filterProductBasedOnPrice(
   product: Product,
@@ -16,7 +16,8 @@ function filterProductBasedOnPrice(
   const filterValueArray = filterValue.split(" ");
   const lowerPrice = Number(filterValueArray[1]);
   const higherPrice = Number(filterValueArray[3]);
-  return product[filterName] >= lowerPrice && product[filterName] <= higherPrice
+  return product[filterName as keyof Product] >= lowerPrice &&
+    product[filterName as keyof Product] <= higherPrice
     ? true
     : false;
 }

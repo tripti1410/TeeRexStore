@@ -30,14 +30,20 @@ const filtersSlice = createSlice({
       }
     },
     removeSelectedFilter(state, { type, payload }) {
-      state.selectedFilters = {
-        ...state.selectedFilters,
-        [payload.attributeName]: state.selectedFilters[
-          payload.attributeName
-        ].filter(
-          (selectedFilterName) => selectedFilterName !== payload.filterName
-        ),
-      };
+      const remainingValuesOfAttribute = state.selectedFilters[
+        payload.attributeName
+      ].filter(
+        (selectedFilterName: string) =>
+          selectedFilterName !== payload.filterName
+      );
+      if (remainingValuesOfAttribute.length === 0) {
+        delete state.selectedFilters[payload.attributeName];
+      } else {
+        state.selectedFilters = {
+          ...state.selectedFilters,
+          [payload.attributeName]: remainingValuesOfAttribute,
+        };
+      }
     },
   },
 });

@@ -10,6 +10,7 @@ import { setProducts } from "../../features/product-api/product-listing-slice";
 import { useEffect } from "react";
 import { setInitialFilters } from "../../features/filters/filters-slice";
 import getFilteredProducts from "../../features/filters/filter-products";
+import getDerivedProducts from "./get-derived-products";
 
 const ProductListing = () => {
   let products: Product[] = [];
@@ -28,18 +29,35 @@ const ProductListing = () => {
     dispatch(setProducts(products));
     dispatch(setInitialFilters(products));
   }, [dispatch, isSuccess]);
-  products = getSearchedProducts(products, searchTerm);
-  products = getFilteredProducts(products, selectedfilters);
+
+  const isSearch = searchTerm === "" ? false : true;
+  const isFilters = Object.keys(selectedfilters).length <= 0 ? false : true;
+
+  const searchedProducts = getSearchedProducts(products, searchTerm);
+  const filteredProducts = getFilteredProducts(products, selectedfilters);
+  const searchedFilteredProducts = getFilteredProducts(
+    searchedProducts,
+    selectedfilters
+  );
+
+  const updatedProducts = getDerivedProducts(
+    products,
+    isSearch,
+    isFilters,
+    searchedProducts,
+    filteredProducts,
+    searchedFilteredProducts
+  );
 
   return (
     <div className="product-page">
       <ProductsSearch />
       <ProductFilters />
       <section className="product-listing">
-        {products.length <= 0 ? (
+        {updatedProducts.length <= 0 ? (
           <p>No products found</p>
         ) : (
-          products.map((product) => (
+          updatedProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))
         )}
@@ -49,3 +67,5 @@ const ProductListing = () => {
 };
 
 export default ProductListing;
+
+export { getDerivedProducts };
