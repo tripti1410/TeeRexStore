@@ -6,7 +6,7 @@ import {
   addSelectedFilter,
   removeSelectedFilter,
 } from "../../features/filters/filters-slice";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 
 const ProductFilters = () => {
   const initialFilters = useAppSelector(
@@ -36,29 +36,32 @@ const ProductFilters = () => {
   };
 
   return (
-    <aside className="product-filters">
-      {ATTRIBUTES.map((attributeName) => (
-        <div key={attributeName}>
-          <h2>{attributeName}</h2>
-          <ul>
-            {!isObjectEmpty(initialFilters) &&
-              initialFilters[attributeName].map((filterName: string) => (
-                <li className="product-filter" key={filterName}>
-                  <input
-                    type="checkbox"
-                    name={filterName}
-                    id={filterName}
-                    onChange={(e) =>
-                      handleFilterChange(e, filterName, attributeName)
-                    }
-                  />
-                  {filterName}
-                </li>
-              ))}
-          </ul>
-        </div>
-      ))}
-    </aside>
+    <React.Fragment>
+      <div className="filter-icon">Filter</div>
+      <aside className="product-filters">
+        {ATTRIBUTES.map((attributeName) => (
+          <div key={attributeName}>
+            <h2>{attributeName}</h2>
+            <ul>
+              {!isObjectEmpty(initialFilters) &&
+                initialFilters[attributeName].map((filterName: string) => (
+                  <li className="product-filter" key={filterName}>
+                    <input
+                      type="checkbox"
+                      name={filterName}
+                      id={filterName}
+                      onChange={(e) =>
+                        handleFilterChange(e, filterName, attributeName)
+                      }
+                    />
+                    {filterName}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </aside>
+    </React.Fragment>
   );
 };
 export default ProductFilters;

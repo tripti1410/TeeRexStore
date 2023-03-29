@@ -1,12 +1,22 @@
 .product-listing {
  grid-area: productListing;
  display: grid;
- grid-gap: calc(2 * var(--space-s));
- grid-template-columns: 1fr 1fr 1fr;
+ grid-gap: calc(1.5 * var(--space-s));
+ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .product-page {
  padding-block: calc(3.5 * var(--space-s));
  display: grid;
- grid-gap: calc(3.5 * var(--space-s));
- grid-template-areas: ". search search" " filters productListing productListing";
+ grid-gap: calc(1.5 * var(--space-s));
+ grid-template-areas: "search filters" "productListing productListing";
+ grid-template-columns: 1fr max-content;
+}
+
+@media (min-width: 768px) {
+ .product-page {
+  padding-block: calc(5 * var(--space-s));
+  grid-gap: calc(3 * var(--space-s));
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: ". search" "filters productListing";
+ }
 }

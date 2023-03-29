@@ -2,7 +2,7 @@ import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer full-width-bg">
       <ul>
         <li>
           <a href="/">

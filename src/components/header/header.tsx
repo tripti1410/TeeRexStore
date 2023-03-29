@@ -5,7 +5,7 @@ import "./header.css";
 
 const Header = () => {
   return (
-    <header className="site-header">
+    <header className="site-header full-width-bg">
       <Logo />
       <Cart />
       <Profile />

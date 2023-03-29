@@ -7,7 +7,7 @@ const Cart = () => {
     <Link to="/shopping-cart">
       <div id="cart">
         <svg
-          width="50px"
+          width="40px"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 40 32"
         >
