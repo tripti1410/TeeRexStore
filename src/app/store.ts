@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import addToCartSlice from "../features/add-to-cart.slice/add-to-cart.slice";
 import filtersSlice from "../features/filters/filters-slice";
 import { productsAPISlice } from "../features/product-api/product-api-slice";
 import productListingSlice from "../features/product-api/product-listing-slice";
@@ -10,6 +11,7 @@ export const store = configureStore({
     products: productListingSlice,
     searchTerm: searchSlice,
     filters: filtersSlice,
+    cart: addToCartSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productsAPISlice.middleware),

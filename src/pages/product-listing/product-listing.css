@@ -3,6 +3,7 @@
  display: grid;
  grid-gap: calc(1.5 * var(--space-s));
  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+ grid-template-rows: 400px;
 }
 .product-page {
  padding-block: calc(3.5 * var(--space-s));
