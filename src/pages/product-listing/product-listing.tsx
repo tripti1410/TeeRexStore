@@ -47,7 +47,7 @@ const ProductListing = () => {
     searchedProducts,
     filteredProducts,
     searchedFilteredProducts
-  );
+  ).map((product) => ({ ...product, selectedQuantity: 0 }));
 
   return (
     <div className="product-page">

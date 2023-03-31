@@ -1,16 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { SelectedProduct } from "../../types";
+
+interface InitialState {
+  selectedProducts: Array<SelectedProduct>;
+}
+
+const initialState: InitialState = { selectedProducts: [] };
 
 const addToCartSlice = createSlice({
   name: "addToCart",
-  initialState: { value: [] },
+  initialState,
   reducers: {
     addProductToCart(state, { type, payload }) {
-      const isExistingProduct = state.value.some(
+      const isExistingProduct = state.selectedProducts.some(
         (product) => product.id === payload.id
       );
 
       if (isExistingProduct) {
-        state.value.map((product) =>
+        state.selectedProducts.map((product) =>
           product.id === payload.id
             ? {
                 ...product,
@@ -22,14 +29,14 @@ const addToCartSlice = createSlice({
             : product
         );
       } else {
-        state.value.push({
+        state.selectedProducts.push({
           ...payload,
           selectedQuantity: payload.quantity > 0 ? 1 : 0,
         });
       }
     },
     removeProductFromCart(state, { type, payload }) {
-      state.value.map((product) =>
+      state.selectedProducts.map((product) =>
         product.id === payload.id
           ? {
               ...product,

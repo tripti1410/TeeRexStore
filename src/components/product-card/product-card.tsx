@@ -1,5 +1,5 @@
 import "./product-card.css";
-import { Product } from "../../types";
+import { Product, SelectedProduct } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   addProductToCart,
@@ -12,17 +12,16 @@ interface PropsType {
 
 const ProductCard = ({ product }: PropsType) => {
   const dispatch = useAppDispatch();
-  const cartProducts = useAppSelector((state) => state.cart.value);
-  const updatedProduct = cartProducts.find(
-    (selectedProduct) => selectedProduct.id === product.id
-  );
+  const cartProducts = useAppSelector((state) => state.cart.selectedProducts);
   const handleAddToCart = () => dispatch(addProductToCart(product));
-
   const handleRemoveFromCart = () => dispatch(removeProductFromCart(product));
 
-  const updateProduct = cartProducts.some(
-    (selectedProduct) => selectedProduct.id === product.id
+  const isSelectedProduct = cartProducts.some(
+    (selectedProduct: SelectedProduct) => selectedProduct.id === product.id
   );
+  const updatedProduct: SelectedProduct = cartProducts.filter(
+    (selectedProduct) => selectedProduct.id === product.id
+  )[0];
 
   const isProductOutOfStock = product.quantity === 0 ? true : false;
 
@@ -34,10 +33,10 @@ const ProductCard = ({ product }: PropsType) => {
       <h2>{product.name}</h2>
       <div className="product-details">
         <span>Rs {product.price}</span>
-        {!updateProduct && !isProductOutOfStock && (
+        {!isSelectedProduct && !isProductOutOfStock && (
           <button onClick={handleAddToCart}>Add to cart</button>
         )}
-        {updateProduct && (
+        {isSelectedProduct && (
           <div>
             <button
               disabled={updatedProduct.selectedQuantity === 0}
