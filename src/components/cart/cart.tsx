@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../app/hooks";
 import "./cart.css";
 
 const Cart = () => {
-  const numberOfSelectedProducts = 0;
+  const selectedProducts = useAppSelector(
+    (state) => state.cart.selectedProducts
+  );
+  const numberOfSelectedProducts = selectedProducts.reduce(
+    (result, selectedProduct) => result + selectedProduct.selectedQuantity,
+    0
+  );
+
   return (
     <Link to="/shopping-cart">
       <div id="cart">
