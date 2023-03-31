@@ -12,8 +12,8 @@ function getFilterVlaues(products: Array<Product>, attribute: string) {
     const margin = 50;
     return [
       `Rs 0 - ${MinPrice}`,
-      `Rs${MinPrice + 1} - ${MaxPrice - margin}`,
-      `Rs${MaxPrice - margin} < `,
+      `Rs ${MinPrice + 1} - ${MaxPrice - margin}`,
+      `Rs ${MaxPrice - (margin - 1)} & more `,
     ];
   } else {
     return [...new Set(attributeValues)];

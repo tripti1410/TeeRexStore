@@ -16,10 +16,17 @@ function filterProductBasedOnPrice(
   const filterValueArray = filterValue.split(" ");
   const lowerPrice = Number(filterValueArray[1]);
   const higherPrice = Number(filterValueArray[3]);
-  return product[filterName as keyof Product] >= lowerPrice &&
-    product[filterName as keyof Product] <= higherPrice
-    ? true
-    : false;
+  let isFilteredProduct = false;
+  if (Number.isNaN(higherPrice)) {
+    isFilteredProduct = product[filterName as keyof Product] >= lowerPrice;
+  } else {
+    isFilteredProduct =
+      product[filterName as keyof Product] >= lowerPrice &&
+      product[filterName as keyof Product] <= higherPrice
+        ? true
+        : false;
+  }
+  return isFilteredProduct;
 }
 
 function filterProductOfAnAttriute(
