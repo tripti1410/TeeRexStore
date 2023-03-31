@@ -3,9 +3,10 @@ import { SelectedProduct } from "../../types";
 
 interface InitialState {
   selectedProducts: Array<SelectedProduct>;
+  totalAmount: number;
 }
 
-const initialState: InitialState = { selectedProducts: [] };
+const initialState: InitialState = { selectedProducts: [], totalAmount: 0 };
 
 const addToCartSlice = createSlice({
   name: "addToCart",
@@ -48,8 +49,37 @@ const addToCartSlice = createSlice({
           : product
       );
     },
+    changeSelectedQuantity(state, { type, payload }) {
+      const modifiedProducts = state.selectedProducts.map((product) => {
+        if (product.id === payload.productId) {
+          return {
+            ...product,
+            selectedQuantity: Number(payload.quantity),
+          };
+        } else {
+          return product;
+        }
+      });
+      state.selectedProducts = modifiedProducts;
+    },
+    changeTotalAmount(state) {
+      state.totalAmount = state.selectedProducts.reduce(
+        (amount, product) => amount + product.selectedQuantity * product.price,
+        0
+      );
+    },
+    removeSelectedProduct(state, { type, payload }) {
+      state.selectedProducts = state.selectedProducts.filter(
+        (product) => product.id !== payload.productId
+      );
+    },
   },
 });
 export default addToCartSlice.reducer;
-export const { addProductToCart, removeProductFromCart } =
-  addToCartSlice.actions;
+export const {
+  addProductToCart,
+  removeProductFromCart,
+  changeSelectedQuantity,
+  changeTotalAmount,
+  removeSelectedProduct,
+} = addToCartSlice.actions;
