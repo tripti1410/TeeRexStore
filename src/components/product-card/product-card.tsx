@@ -34,11 +34,14 @@ const ProductCard = ({ product }: PropsType) => {
       <div className="product-details">
         <span>Rs {product.price}</span>
         {!isSelectedProduct && !isProductOutOfStock && (
-          <button onClick={handleAddToCart}>Add to cart</button>
+          <button className="button" onClick={handleAddToCart}>
+            Add to cart
+          </button>
         )}
         {isSelectedProduct && (
           <div>
             <button
+              className="button"
               disabled={updatedProduct.selectedQuantity === 0}
               onClick={handleRemoveFromCart}
             >
@@ -48,6 +51,7 @@ const ProductCard = ({ product }: PropsType) => {
               {updatedProduct.selectedQuantity}
             </span>
             <button
+              className="button"
               disabled={
                 updatedProduct.selectedQuantity === updatedProduct.quantity
               }

@@ -41,7 +41,7 @@ const ShopingCart = () => {
             <div>
               <h2>{product.name}</h2>
               <div>
-                {product.currency}
+                {product.currency === "INR" && "Rs "}
                 {product.price}
               </div>
             </div>
@@ -61,7 +61,12 @@ const ShopingCart = () => {
                 )
               )}
             </select>
-            <button onClick={() => handleDelete(product.id)}>Delete</button>
+            <button
+              className="button button--small button--danger"
+              onClick={() => handleDelete(product.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
