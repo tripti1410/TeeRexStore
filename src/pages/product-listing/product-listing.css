@@ -21,3 +21,8 @@
   grid-template-areas: ". search" "filters productListing";
  }
 }
+.not-found-msg {
+ align-self: center;
+ justify-self: center;
+ grid-column: 2;
+}

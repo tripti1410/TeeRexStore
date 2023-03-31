@@ -53,6 +53,11 @@ const filter5 = {
   gender: ["Men", "Women"],
   type: ["Polo", "Hoodie"],
 };
+const filter6 = {
+  price: ["Rs 451 & more"],
+  gender: ["Men", "Women"],
+  type: ["Polo", "Hoodie"],
+};
 
 describe("Filter products", () => {
   test("Given Empty object; it should return all the products", () => {
@@ -78,5 +83,8 @@ describe("Filter products", () => {
   });
   test("Given filter5; it should return all the products which has Men and Women as gender, price Rs 0 -250 and type polo and hoodie", () => {
     expect(getFilteredProducts(products, filter5)).toStrictEqual([products[0]]);
+  });
+  test("Given filter6; it should return all the products which has Men and Women as gender, price Rs 451 and more and type polo and hoodie", () => {
+    expect(getFilteredProducts(products, filter6)).toStrictEqual([products[1]]);
   });
 });
