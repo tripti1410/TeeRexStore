@@ -32,9 +32,6 @@ a {
  color: var(--clr-2);
  text-decoration: inherit;
 }
-a:hover {
- color: var(--clr-6);
-}
 
 body {
  margin: 0;

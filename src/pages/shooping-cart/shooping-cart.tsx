@@ -29,7 +29,9 @@ const ShopingCart = () => {
       {selectedProducts.length === 0 && (
         <div className="cart-is-empty-msg flex-center flex-direction-column">
           <p>Cart is empty. </p>
-          <Link to="/">Continue shopping</Link>
+          <Link to="/" className="link-curtain-effect">
+            Continue shopping
+          </Link>
         </div>
       )}
       <ul className="shopping-cart-items">

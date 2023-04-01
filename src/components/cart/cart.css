@@ -1,6 +1,7 @@
 #cart {
  position: relative;
  width: 40px;
+ transition: margin 0.1s;
 }
 #cart .cart-total {
  position: absolute;
@@ -10,4 +11,7 @@
  width: 25px;
  height: 25px;
  border-radius: 50%;
+}
+#cart:hover {
+ margin-bottom: 10px;
 }

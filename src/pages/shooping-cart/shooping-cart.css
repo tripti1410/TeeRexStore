@@ -23,3 +23,26 @@
 .cart-is-empty-msg a {
  text-decoration: underline;
 }
+.link-curtain-effect {
+ position: relative;
+}
+.link-curtain-effect:before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: -1;
+}
+.link-curtain-effect:hover::before {
+ clip-path: polygon(0 0, 0% 0%, 0% 100%, 0% 100%);
+ background-color: var(--clr-6);
+ animation: curtainEffect 3s ease-out;
+}
+
+@keyframes curtainEffect {
+ 100% {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+ }
+}
