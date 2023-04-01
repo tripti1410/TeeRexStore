@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { setInitialFilters } from "../../features/filters/filters-slice";
 import getFilteredProducts from "../../features/filters/filter-products";
 import getDerivedProducts from "./get-derived-products";
+import NotFoundMsg from "./not-found-msg";
 
 const ProductListing = () => {
   let products: Product[] = [];
@@ -54,16 +55,10 @@ const ProductListing = () => {
       <ProductsSearch />
       <ProductFilters />
       <section className="product-listing">
-        {updatedProducts.length <= 0 ? (
-          <div className="not-found-msg">
-            <h3>We couldn't find any matches!</h3>
-            <p>Please check the spelling or try searching something else</p>
-          </div>
-        ) : (
-          updatedProducts.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))
-        )}
+        {updatedProducts.length === 0 && <NotFoundMsg />}
+        {updatedProducts.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
       </section>
     </div>
   );
