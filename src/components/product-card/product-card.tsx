@@ -59,6 +59,9 @@ const ProductCard = ({ product }: PropsType) => {
             >
               +
             </button>
+            {updatedProduct.selectedQuantity === updatedProduct.quantity && (
+              <div className="out-of-stock">No more product available!</div>
+            )}
           </div>
         )}
 
