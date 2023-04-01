@@ -6,9 +6,11 @@ import {
   addSelectedFilter,
   removeSelectedFilter,
 } from "../../features/filters/filters-slice";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
+import FilterIcon from "./filter.icon";
 
 const ProductFilters = () => {
+  const [filterToggle, setFilterToggle] = useState(false);
   const initialFilters = useAppSelector(
     (state) => state.filters.initialFilters
   );
@@ -37,8 +39,23 @@ const ProductFilters = () => {
 
   return (
     <React.Fragment>
-      <div className="filter-icon">Filter</div>
-      <aside className="product-filters">
+      <button
+        className="button filter-icon"
+        onClick={() => setFilterToggle(true)}
+      >
+        <FilterIcon />
+      </button>
+      <aside
+        className={`product-filters ${
+          filterToggle ? "product-filters--open" : "product-filters--close"
+        }`}
+      >
+        <button
+          className="button filter-icon"
+          onClick={() => setFilterToggle(false)}
+        >
+          X
+        </button>
         {ATTRIBUTES.map((attributeName) => (
           <div key={attributeName}>
             <h2>{attributeName}</h2>

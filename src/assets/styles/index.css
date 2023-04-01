@@ -25,6 +25,10 @@
 
  --fs-100: 1rem;
  --fs-200: 1.2rem;
+
+ --zIndex--1: -1;
+ --zIndex-0: 0;
+ --zIndex-10: 10;
 }
 
 a {
