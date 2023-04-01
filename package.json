@@ -8,7 +8,8 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "prepare": "husky install",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "typescript": "tsc",
     "preview": "vite preview",
     "test": "vitest"
   },
