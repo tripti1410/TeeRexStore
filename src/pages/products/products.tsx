@@ -1,4 +1,3 @@
-import ProductCard from "../../components/product-card/product-card";
 import ProductFilters from "../../components/product-filters/product-filters";
 import ProductsSearch from "../../components/products-search/products-search";
 import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
@@ -7,15 +6,21 @@ import { Product } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import getSearchedProducts from "../../features/search/search";
 import { setProducts } from "../../features/product-api/product-listing-slice";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { setInitialFilters } from "../../features/filters/filters-slice";
 import getFilteredProducts from "../../features/filters/filter-products";
 import getDerivedProducts from "./get-derived-products";
-import NotFoundMsg from "./not-found-msg";
+import ProductListing from "./product-listing";
 
-const ProductListing = () => {
+const Products = () => {
   let products: Product[] = [];
-  const { data = [], isSuccess } = useGetProductsQuery();
+  const {
+    data = [],
+    isSuccess,
+    error,
+    isError,
+    isLoading,
+  } = useGetProductsQuery();
   const searchTerm = useAppSelector((state) => state.searchTerm.value);
   const selectedfilters = useAppSelector(
     (state) => state.filters.selectedFilters
@@ -52,18 +57,27 @@ const ProductListing = () => {
 
   return (
     <div className="product-page">
-      <ProductsSearch />
-      <ProductFilters />
-      <section className="product-listing">
-        {updatedProducts.length === 0 && <NotFoundMsg />}
-        {updatedProducts.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </section>
+      {isLoading && (
+        <p className="loading flex-center flex-direction-column">
+          Loading......
+        </p>
+      )}
+      {isError && (
+        <p className="error-msg flex-center flex-direction-column">
+          {error.error}
+        </p>
+      )}
+      {isSuccess && (
+        <React.Fragment>
+          <ProductsSearch />
+          <ProductFilters />
+          <ProductListing updatedProducts={updatedProducts} />
+        </React.Fragment>
+      )}
     </div>
   );
 };
 
-export default ProductListing;
+export default Products;
 
 export { getDerivedProducts };

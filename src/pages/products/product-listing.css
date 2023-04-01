@@ -26,3 +26,10 @@
  justify-self: center;
  grid-column: 1/-1;
 }
+.loading,
+.error-msg {
+ grid-column: 1/-1;
+ min-height: 50vh;
+ font-size: 2rem;
+ font-weight: 600;
+}
