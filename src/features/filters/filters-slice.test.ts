@@ -44,7 +44,7 @@ describe("Suit for ADDING selected filter", () => {
       )
     ).toEqual(filter2);
   });
-  test("Add existing attributes filter", () => {
+  test("Add another attributes filter", () => {
     expect(
       reducer(
         filter2,
@@ -52,7 +52,7 @@ describe("Suit for ADDING selected filter", () => {
       )
     ).toEqual(filter3);
   });
-  test("Add existing attributes filter", () => {
+  test("Add another attributes filter", () => {
     expect(
       reducer(
         filter3,
