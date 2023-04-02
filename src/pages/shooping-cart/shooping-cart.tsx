@@ -4,7 +4,7 @@ import {
   changeSelectedQuantity,
   changeTotalAmount,
   removeSelectedProduct,
-} from "../../features/add-to-cart.slice/add-to-cart.slice";
+} from "../../features/add-to-cart-slice/add-to-cart-slice";
 import CartItems from "./cart-items-list";
 import EmptyCartMsg from "./empty-card-msg";
 import "./shooping-cart.css";

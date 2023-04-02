@@ -36,7 +36,7 @@ const addToCartSlice = createSlice({
         });
       }
     },
-    removeProductFromCart(state, { type, payload }) {
+    subtractProductFromCart(state, { type, payload }) {
       state.selectedProducts.map((product) =>
         product.id === payload.id
           ? {
@@ -78,7 +78,7 @@ const addToCartSlice = createSlice({
 export default addToCartSlice.reducer;
 export const {
   addProductToCart,
-  removeProductFromCart,
+  subtractProductFromCart,
   changeSelectedQuantity,
   changeTotalAmount,
   removeSelectedProduct,

@@ -3,8 +3,8 @@ import { Product, SelectedProduct } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   addProductToCart,
-  removeProductFromCart,
-} from "../../features/add-to-cart.slice/add-to-cart.slice";
+  subtractProductFromCart,
+} from "../../features/add-to-cart-slice/add-to-cart-slice";
 
 interface PropsType {
   product: Product;
@@ -14,7 +14,7 @@ const ProductCard = ({ product }: PropsType) => {
   const dispatch = useAppDispatch();
   const cartProducts = useAppSelector((state) => state.cart.selectedProducts);
   const handleAddToCart = () => dispatch(addProductToCart(product));
-  const handleRemoveFromCart = () => dispatch(removeProductFromCart(product));
+  const handleRemoveFromCart = () => dispatch(subtractProductFromCart(product));
 
   const isSelectedProduct = cartProducts.some(
     (selectedProduct: SelectedProduct) => selectedProduct.id === product.id
