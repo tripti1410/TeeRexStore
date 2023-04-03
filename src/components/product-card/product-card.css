@@ -32,3 +32,19 @@
  padding: 0.6em 1.2em;
  font-weight: 600;
 }
+.product-card.sold-out::before {
+ content: "SOLD OUT";
+ background-color: rgba(255, 255, 255, 0.7);
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: 10;
+ font-size: 2rem;
+ font-weight: 600;
+ color: #042940;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}

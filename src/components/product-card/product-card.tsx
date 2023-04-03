@@ -24,17 +24,17 @@ const ProductCard = ({ product }: PropsType) => {
     (selectedProduct) => selectedProduct.id === product.id
   )[0];
 
-  const isProductOutOfStock = product.quantity === 0 ? true : false;
+  const isProductSoldOut = product.quantity === 0 ? true : false;
 
   return (
-    <article className="product-card">
+    <article className={`product-card ${isProductSoldOut ? "sold-out" : ""}`}>
       <figure>
         <img src={product.imageURL} alt={product.name} />
       </figure>
       <h2>{product.name}</h2>
       <div className="product-details">
         <span>Rs {product.price}</span>
-        {!isSelectedProduct && !isProductOutOfStock && (
+        {!isSelectedProduct && !isProductSoldOut && (
           <Button onClick={handleAddToCart}>Add to cart</Button>
         )}
         {isSelectedProduct && (
@@ -60,10 +60,6 @@ const ProductCard = ({ product }: PropsType) => {
               <div className="out-of-stock">No more product available!</div>
             )}
           </div>
-        )}
-
-        {isProductOutOfStock && (
-          <div className="out-of-stock">Out of stock </div>
         )}
       </div>
     </article>
