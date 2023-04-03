@@ -6,8 +6,15 @@ import "./header.css";
 const Header = () => {
   return (
     <header className="site-header full-width-bg">
+      <a className="skip-links" href="#main">
+        Skip to main content
+      </a>
+
       <Logo />
-      <Cart />
+      <nav>
+        <Cart />
+      </nav>
+
       <Profile />
     </header>
   );

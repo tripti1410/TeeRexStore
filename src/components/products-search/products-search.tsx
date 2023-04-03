@@ -11,9 +11,11 @@ const ProductsSearch = () => {
   };
 
   return (
-    <div className="products-search">
+    <div className="products-search" role="search">
       <input
         type="search"
+        name="product-search"
+        id="product-search"
         placeholder="Search for products"
         onChange={(e) => searchProducts(e)}
       />

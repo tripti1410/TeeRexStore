@@ -43,6 +43,7 @@ const ProductFilters = () => {
         <FilterIcon />
       </Button>
       <aside
+        aria-label="product-filters"
         className={`product-filters ${
           filterToggle ? "product-filters--open" : "product-filters--close"
         }`}

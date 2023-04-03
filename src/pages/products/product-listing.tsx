@@ -7,7 +7,7 @@ type Props = {
 const ProductListing = (props: Props) => {
   const updatedProducts = props.updatedProducts;
   return (
-    <section className="product-listing">
+    <section className="product-listing" aria-label="Products-list">
       {updatedProducts.length === 0 ? (
         <NotFoundMsg />
       ) : (

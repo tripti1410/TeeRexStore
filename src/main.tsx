@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import "../src/assets/styles/reset.css";
 import "../src/assets/styles/utility.css";
+import "../src/assets/styles/accessibility.css";
 import "../src/assets/styles/index.css";
 
 import Header from "./components/header/header";

@@ -1,0 +1,8 @@
+.skip-links {
+ font-size: var(--fs-200);
+ position: absolute;
+ left: -11rem;
+ padding: 1rem;
+ max-width: 11rem;
+ opacity: 0;
+}
