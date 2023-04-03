@@ -5,6 +5,7 @@ import {
   addProductToCart,
   subtractProductFromCart,
 } from "../../features/add-to-cart-slice/add-to-cart-slice";
+import Button from "../button/button";
 
 interface PropsType {
   product: Product;
@@ -34,31 +35,27 @@ const ProductCard = ({ product }: PropsType) => {
       <div className="product-details">
         <span>Rs {product.price}</span>
         {!isSelectedProduct && !isProductOutOfStock && (
-          <button className="button" onClick={handleAddToCart}>
-            Add to cart
-          </button>
+          <Button onClick={handleAddToCart}>Add to cart</Button>
         )}
         {isSelectedProduct && (
           <div>
-            <button
-              className="button"
+            <Button
               disabled={updatedProduct.selectedQuantity === 0}
               onClick={handleRemoveFromCart}
             >
               -
-            </button>
+            </Button>
             <span className="selected-quantity">
               {updatedProduct.selectedQuantity}
             </span>
-            <button
-              className="button"
+            <Button
               disabled={
                 updatedProduct.selectedQuantity === updatedProduct.quantity
               }
               onClick={handleAddToCart}
             >
               +
-            </button>
+            </Button>
             {updatedProduct.selectedQuantity === updatedProduct.quantity && (
               <div className="out-of-stock">No more product available!</div>
             )}

@@ -6,6 +6,7 @@ import {
 } from "../../features/filters/filters-slice";
 import React, { ChangeEvent, useState } from "react";
 import FilterIcon from "./filter.icon";
+import Button from "../button/button";
 
 const ProductFilters = () => {
   const [filterToggle, setFilterToggle] = useState(false);
@@ -38,23 +39,17 @@ const ProductFilters = () => {
 
   return (
     <React.Fragment>
-      <button
-        className="button filter-icon"
-        onClick={() => setFilterToggle(true)}
-      >
+      <Button onClick={() => setFilterToggle(true)} classNames="filter-icon">
         <FilterIcon />
-      </button>
+      </Button>
       <aside
         className={`product-filters ${
           filterToggle ? "product-filters--open" : "product-filters--close"
         }`}
       >
-        <button
-          className="button filter-icon"
-          onClick={() => setFilterToggle(false)}
-        >
+        <Button onClick={() => setFilterToggle(false)} classNames="filter-icon">
           X
-        </button>
+        </Button>
         {attributes.map((attributeName) => (
           <div key={attributeName}>
             <h2>{attributeName}</h2>

@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { SelectedProduct } from "../../types";
+import Button from "../../components/button/button";
 
 interface Props {
   selectedProducts: Array<SelectedProduct>;
@@ -43,12 +44,12 @@ const CartItems = ({
             )
           )}
         </select>
-        <button
-          className="button button--small button--danger"
+        <Button
+          classNames="button--small button--danger"
           onClick={() => handleDelete(product.id)}
         >
           Delete
-        </button>
+        </Button>
       </li>
     ))}
   </ul>
