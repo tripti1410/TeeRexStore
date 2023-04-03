@@ -1,31 +1,33 @@
-import { Product } from "../../types";
-const ATTRIBUTES: Array<string> = ["gender", "color", "type", "price"];
+import { Product, ProductFilterableKeys } from "../../types";
 
-function getFilterVlaues(products: Array<Product>, attribute: string) {
-  const attributeValues: Array<string> = [];
-  products.forEach((product) => attributeValues.push(product[attribute]));
-
-  if (attribute === "price") {
-    const priceValues = [...new Set(attributeValues)].sort();
-    const MaxPrice = Number(priceValues[priceValues.length - 1]);
-    const MinPrice = Number(priceValues[0]);
+function getFilterValuesFromAttribute(
+  products: Array<Product>,
+  attribute: ProductFilterableKeys
+): Array<string> {
+  const attributeValuesExceptPrice: Array<string> = [];
+  const priceValues: Array<number> = [];
+  products.forEach((product) => {
+    if (attribute === "price") {
+      priceValues.push(product[attribute]);
+    } else {
+      attributeValuesExceptPrice.push(product[attribute]);
+    }
+  });
+  let attributeValues: Array<string> = [];
+  if (priceValues.length > 0) {
+    const priceValuesSorted = [...new Set(priceValues)].sort();
+    const MaxPrice = Number(priceValuesSorted[priceValuesSorted.length - 1]);
+    const MinPrice = Number(priceValuesSorted[0]);
     const margin = 50;
-    return [
+    attributeValues = [
       `Rs 0 - ${MinPrice}`,
       `Rs ${MinPrice + 1} - ${MaxPrice - margin}`,
       `Rs ${MaxPrice - (margin - 1)} & more `,
     ];
   } else {
-    return [...new Set(attributeValues)];
+    attributeValues = [...new Set(attributeValuesExceptPrice)];
   }
+  return attributeValues;
 }
 
-function getFilters(products: Array<Product>) {
-  const filters: object = ATTRIBUTES.reduce((accumulator, value) => {
-    return { ...accumulator, [value]: getFilterVlaues(products, value) };
-  }, {});
-  return filters;
-}
-
-export default getFilters;
-export { ATTRIBUTES };
+export { getFilterValuesFromAttribute };

@@ -1,15 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import getFilters from "./get-filters";
+import { getFilterValuesFromAttribute } from "./get-filters";
+import { FiltersType, ProductFilterableKeys } from "../../types";
+
+const initialFilters: FiltersType | Record<string, Array<string>> = {};
+const selectedFilters: FiltersType | Record<string, Array<string>> = {};
+const attributes: Array<ProductFilterableKeys> = [
+  "gender",
+  "color",
+  "type",
+  "price",
+];
+export const initialState = {
+  initialFilters: initialFilters,
+  selectedFilters: selectedFilters,
+  attributes: attributes,
+};
 
 const filtersSlice = createSlice({
   name: "filter",
-  initialState: {
-    initialFilters: {},
-    selectedFilters: {},
-  },
+  initialState,
   reducers: {
     setInitialFilters(state, { type, payload }) {
-      state.initialFilters = getFilters(payload);
+      state.initialFilters = state.attributes.reduce(
+        (accumulator, attribute) => ({
+          ...accumulator,
+          [attribute]: getFilterValuesFromAttribute(payload, attribute),
+        }),
+        {}
+      );
     },
     addSelectedFilter(state, { type, payload }) {
       if (

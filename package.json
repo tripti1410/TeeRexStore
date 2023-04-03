@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "dev": "vite",
     "build": "vite build",
-    "typescript": "tsc",
+    "tsc": "tsc",
     "preview": "vite preview",
     "test": "vitest"
   },

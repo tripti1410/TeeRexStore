@@ -6,7 +6,10 @@ interface InitialState {
   totalAmount: number;
 }
 
-const initialState: InitialState = { selectedProducts: [], totalAmount: 0 };
+export const initialState: InitialState = {
+  selectedProducts: [],
+  totalAmount: 0,
+};
 
 const addToCartSlice = createSlice({
   name: "addToCart",

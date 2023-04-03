@@ -22,3 +22,11 @@ export interface SelectedProduct {
   quantity: number;
   selectedQuantity: number;
 }
+
+export type ProductFilterableKeys = "gender" | "color" | "type" | "price";
+export type FiltersType = {
+  gender: Array<string>;
+  color: Array<string>;
+  type: Array<string>;
+  price: Array<string>;
+};

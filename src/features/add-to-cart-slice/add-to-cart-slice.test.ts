@@ -5,10 +5,10 @@ import reducer, {
   changeSelectedQuantity,
   changeTotalAmount,
   removeSelectedProduct,
+  initialState,
 } from "./add-to-cart-slice";
 import products from "../../app/test-dummy-data";
 
-const initialState = { selectedProducts: [], totalAmount: 0 };
 const state1 = {
   ...initialState,
   selectedProducts: [{ ...products[1], selectedQuantity: 2 }],

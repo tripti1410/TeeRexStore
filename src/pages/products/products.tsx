@@ -1,40 +1,26 @@
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import ProductFilters from "../../components/product-filters/product-filters";
 import ProductsSearch from "../../components/products-search/products-search";
-import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
-import "./product-listing.css";
-import { Product } from "../../types";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import getSearchedProducts from "../../features/search/search";
-import { setProducts } from "../../features/product-api/product-listing-slice";
-import React, { useEffect } from "react";
-import { setInitialFilters } from "../../features/filters/filters-slice";
 import getFilteredProducts from "../../features/filters/filter-products";
+import { setInitialFilters } from "../../features/filters/filters-slice";
+import { setProducts } from "../../features/product-api/product-listing-slice";
+import getSearchedProducts from "../../features/search/search";
+import { Product } from "../../types";
 import getDerivedProducts from "./get-derived-products";
 import ProductListing from "./product-listing";
-
-const Products = () => {
-  let products: Product[] = [];
-  const {
-    data = [],
-    isSuccess,
-    error,
-    isError,
-    isLoading,
-  } = useGetProductsQuery();
+import React from "react";
+interface Props {
+  products: Array<Product>;
+}
+const Products = ({ products }: Props) => {
   const searchTerm = useAppSelector((state) => state.searchTerm.value);
   const selectedfilters = useAppSelector(
     (state) => state.filters.selectedFilters
   );
-  if (isSuccess) {
-    products = data;
-  }
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (!isSuccess) return;
-    dispatch(setProducts(products));
-    dispatch(setInitialFilters(products));
-  }, [dispatch, isSuccess]);
+  const dispatch = useAppDispatch();
+  dispatch(setProducts(products));
+  dispatch(setInitialFilters(products));
 
   const isSearch = searchTerm === "" ? false : true;
   const isFilters = Object.keys(selectedfilters).length <= 0 ? false : true;
@@ -54,30 +40,13 @@ const Products = () => {
     filteredProducts,
     searchedFilteredProducts
   ).map((product) => ({ ...product, selectedQuantity: 0 }));
-
   return (
-    <div className="product-page">
-      {isLoading && (
-        <p className="loading flex-center flex-direction-column">
-          Loading......
-        </p>
-      )}
-      {isError && (
-        <p className="error-msg flex-center flex-direction-column">
-          {error.error}
-        </p>
-      )}
-      {isSuccess && (
-        <React.Fragment>
-          <ProductsSearch />
-          <ProductFilters />
-          <ProductListing updatedProducts={updatedProducts} />
-        </React.Fragment>
-      )}
-    </div>
+    <React.Fragment>
+      <ProductsSearch />
+      <ProductFilters />
+      <ProductListing updatedProducts={updatedProducts} />
+    </React.Fragment>
   );
 };
 
 export default Products;
-
-export { getDerivedProducts };

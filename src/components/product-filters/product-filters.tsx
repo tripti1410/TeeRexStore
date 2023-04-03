@@ -1,7 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { ATTRIBUTES } from "../../features/filters/get-filters";
 import "./product-filters.css";
-import { isObjectEmpty } from "../../app/utility";
 import {
   addSelectedFilter,
   removeSelectedFilter,
@@ -14,6 +12,7 @@ const ProductFilters = () => {
   const initialFilters = useAppSelector(
     (state) => state.filters.initialFilters
   );
+  const attributes = Object.keys(initialFilters);
   const dispatch = useAppDispatch();
   const handleFilterChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -56,24 +55,23 @@ const ProductFilters = () => {
         >
           X
         </button>
-        {ATTRIBUTES.map((attributeName) => (
+        {attributes.map((attributeName) => (
           <div key={attributeName}>
             <h2>{attributeName}</h2>
             <ul>
-              {!isObjectEmpty(initialFilters) &&
-                initialFilters[attributeName].map((filterName: string) => (
-                  <li className="product-filter" key={filterName}>
-                    <input
-                      type="checkbox"
-                      name={filterName}
-                      id={filterName}
-                      onChange={(e) =>
-                        handleFilterChange(e, filterName, attributeName)
-                      }
-                    />
-                    {filterName}
-                  </li>
-                ))}
+              {initialFilters[attributeName].map((filterName: string) => (
+                <li className="product-filter" key={filterName}>
+                  <input
+                    type="checkbox"
+                    name={filterName}
+                    id={filterName}
+                    onChange={(e) =>
+                      handleFilterChange(e, filterName, attributeName)
+                    }
+                  />
+                  {filterName}
+                </li>
+              ))}
             </ul>
           </div>
         ))}

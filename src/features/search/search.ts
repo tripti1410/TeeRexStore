@@ -1,8 +1,13 @@
 import { Product } from "../../types";
 
-const attributes = ["name", "color", "type"];
+type ProductSearchableKeys = "name" | "color" | "type";
+const attributes: Array<ProductSearchableKeys> = ["name", "color", "type"];
 
-function getProduct(product: Product, attribute: string, searchTerm: string) {
+function getProduct(
+  product: Product,
+  attribute: ProductSearchableKeys,
+  searchTerm: string
+) {
   const searchTermLowerCase = searchTerm.toLowerCase();
   const productAttributeLowerCase = product[attribute].toLowerCase();
   return productAttributeLowerCase.startsWith(searchTermLowerCase);

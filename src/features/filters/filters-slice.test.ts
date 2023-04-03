@@ -2,12 +2,8 @@ import { describe, expect, test } from "vitest";
 import reducer, {
   addSelectedFilter,
   removeSelectedFilter,
+  initialState,
 } from "./filters-slice";
-
-const initialState = {
-  initialFilters: {},
-  selectedFilters: {},
-};
 
 const filter1 = { ...initialState, selectedFilters: { gender: ["Women"] } };
 

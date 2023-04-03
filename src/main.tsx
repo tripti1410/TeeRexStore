@@ -9,7 +9,7 @@ import "../src/assets/styles/index.css";
 
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import ProductListing from "./pages/products/products";
+import ProductListing from "./pages/products/products-page";
 import ShopingCart from "./pages/shooping-cart/shooping-cart";
 import ErrorPage from "./pages/error";
 
