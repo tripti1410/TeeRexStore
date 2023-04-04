@@ -56,16 +56,18 @@ const ProductFilters = () => {
             <h2>{attributeName}</h2>
             <ul>
               {initialFilters[attributeName].map((filterName: string) => (
-                <li className="product-filter" key={filterName}>
-                  <input
-                    type="checkbox"
-                    name={filterName}
-                    id={filterName}
-                    onChange={(e) =>
-                      handleFilterChange(e, filterName, attributeName)
-                    }
-                  />
-                  {filterName}
+                <li key={filterName}>
+                  <label className="product-filter">
+                    <input
+                      type="checkbox"
+                      name={filterName}
+                      id={filterName}
+                      onChange={(e) =>
+                        handleFilterChange(e, filterName, attributeName)
+                      }
+                    />
+                    {filterName}
+                  </label>
                 </li>
               ))}
             </ul>
