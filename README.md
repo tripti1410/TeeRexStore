@@ -7,9 +7,9 @@ The task is taken from Greektrust coding challenge. [Here](https://www.geektrust
 
 - Bundler - [Vite](https://vitejs.dev)
 - UI - React + Redux + Typescript
-- Lint - Eslint,
-- Formatter - prettier
-- Tests - [vitest](https://vitest.dev)
+- Lint - Eslint
+- Formatter - Prettier
+- Tests - [Vitest](https://vitest.dev)
 - Animations - CSS and [GSAP](https://greensock.com)
 
 ## Features
@@ -17,7 +17,6 @@ The task is taken from Greektrust coding challenge. [Here](https://www.geektrust
 - Fetch products using API.
 - Client side search and filtering of products.
 - Shopping cart
-- Support for light and dark mode.
 
 ## Accessibility
 
