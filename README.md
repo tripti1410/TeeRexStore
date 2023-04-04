@@ -24,3 +24,33 @@ The task is taken from Greektrust coding challenge. [Here](https://www.geektrust
 
 - Light and dark mode
   ![Screenshot showing side by side view of light and dark mode of home page](docs/dark-light-gt.png)
+
+## Development
+
+Install Node v18
+
+### To run this locally
+
+```shell
+npm install
+npm run dev
+```
+
+### To run tests
+
+```shell
+npm run test
+```
+
+### To run typescript checker
+
+```shell
+npm run tsc
+```
+
+### To build and preview the production site
+
+```shell
+npm run build
+npm run preview
+```
