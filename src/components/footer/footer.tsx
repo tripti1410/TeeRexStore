@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="site-footer full-width-bg">
       <SocialMedia />
       <div className="copyright">
-        © 2019 - Today / Copyright TeeRex Store. All rights reserved.
+        © 2023 - Today / Copyright TeeRex Store. All rights reserved.
       </div>
     </footer>
   );
