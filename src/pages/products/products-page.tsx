@@ -1,5 +1,5 @@
 import { useGetProductsQuery } from "../../features/product-api/product-api-slice";
-import "./product-listing.css";
+import "./product-page.css";
 
 import Products from "./products";
 

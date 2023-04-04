@@ -1,8 +1,12 @@
 .skip-links {
  font-size: var(--fs-200);
  position: absolute;
- left: -11rem;
- padding: 1rem;
+ padding: 0.5rem;
  max-width: 11rem;
- opacity: 0;
+ left: 50%;
+ top: 0;
+ transform: translateY(-100%);
+}
+.skip-links:focus {
+ transform: translateY(0%);
 }
