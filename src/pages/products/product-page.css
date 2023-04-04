@@ -3,7 +3,6 @@
  display: grid;
  grid-gap: calc(1.5 * var(--space-s));
  grid-template-columns: repeat(auto-fill, minmax(250px, 310px));
- grid-template-rows: 400px;
  justify-content: center;
 }
 .product-page {

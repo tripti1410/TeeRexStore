@@ -8,6 +8,7 @@ import {
 import CartItems from "./cart-items-list";
 import EmptyCartMsg from "./empty-card-msg";
 import "./shooping-cart.css";
+import { Link } from "react-router-dom";
 
 const ShopingCart = () => {
   const cart = useAppSelector((state) => state.cart);
@@ -34,6 +35,11 @@ const ShopingCart = () => {
         handleChangeSelectedQuantity={handleChangeSelectedQuantity}
       />
       {selectedProducts.length !== 0 && <h3>Total Amount: {totalAmount}</h3>}
+      {selectedProducts.length !== 0 && (
+        <Link to="/" className="link-curtain-effect">
+          Continue shopping
+        </Link>
+      )}
     </div>
   );
 };

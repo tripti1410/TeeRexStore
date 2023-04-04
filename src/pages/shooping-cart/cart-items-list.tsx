@@ -19,7 +19,12 @@ const CartItems = ({
     {selectedProducts.map((product) => (
       <li key={product.id}>
         <figure>
-          <img src={product.imageURL} alt={product.name} />
+          <img
+            src={product.imageURL}
+            alt={product.name}
+            width="60px"
+            height="60px"
+          />
         </figure>
         <div>
           <h2>{product.name}</h2>

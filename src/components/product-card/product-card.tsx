@@ -29,7 +29,12 @@ const ProductCard = ({ product }: PropsType) => {
   return (
     <article className={`product-card ${isProductSoldOut ? "sold-out" : ""}`}>
       <figure>
-        <img src={product.imageURL} alt={product.name} />
+        <img
+          src={product.imageURL}
+          alt={product.name}
+          width="300px"
+          height="300px"
+        />
       </figure>
       <h2>{product.name}</h2>
       <div className="product-details">

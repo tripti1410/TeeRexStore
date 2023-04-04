@@ -5,26 +5,32 @@
  gap: 2rem;
  text-align: left;
 }
+.shopping-cart-items {
+ max-width: 500px;
+}
 .shopping-cart-items li {
  display: grid;
  grid-gap: 1rem;
  align-items: center;
- grid-template-columns: 70px 0.2fr max-content max-content;
+ grid-template-columns: max-content 1fr max-content max-content;
 }
 .shopping-cart-items li figure {
  margin: 0;
  max-width: 100px;
  max-height: 100px;
 }
+.shopping-cart-items li .button {
+ justify-self: end;
+}
 .cart-is-empty-msg {
  min-height: 50vh;
  font-size: 2rem;
 }
-.cart-is-empty-msg a {
- text-decoration: underline;
-}
 .link-curtain-effect {
  position: relative;
+ width: max-content;
+ text-decoration: underline;
+ cursor: pointer;
 }
 .link-curtain-effect:before {
  content: "";
