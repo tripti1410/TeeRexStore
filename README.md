@@ -5,6 +5,10 @@
 A t-shirt shopping website. It is a sample website to showcase my skills.
 The task is taken from Greektrust coding challenge. [Here](https://www.geektrust.com/coding/detailed/teerex-store) is the description of the task, rules, api, mockup etc.
 
+## GeekTrust Evaluation
+
+![GeekTrust Evaluation](https://user-images.githubusercontent.com/16831324/235892284-7da40635-5731-4752-8e98-f6828e3b7ab2.png)
+
 ## Tool and Tech
 
 - Bundler - [Vite](https://vitejs.dev)
